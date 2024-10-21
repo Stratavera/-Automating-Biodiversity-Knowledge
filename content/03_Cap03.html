@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.545">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Manejo habil de la Información sobre Biodiversidad en Ecuador mediante Ciencia Abierta y Mineria de textos - 3&nbsp; Automatización y Minería de Textos: Herramientas para el Acceso al Conocimiento</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/04_Cap04.html" rel="next">
+<link href="../content/02_Cap02.html" rel="prev">
+<link href="../assets/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/03_Cap03.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Automatización y Minería de Textos: Herramientas para el Acceso al Conocimiento</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/book_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Manejo habil de la Información sobre Biodiversidad en Ecuador mediante Ciencia Abierta y Mineria de textos</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://nmfs-opensci.github.io" title="NMFS Open Science" class="quarto-navigation-tool px-1" aria-label="NMFS Open Science"><i class="bi bi-globe"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenido</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/01_Cap01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">El Desafío del Conocimiento Encerrado: Acceso y Usabilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/02_Cap02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Ciencia Abierta: Hacia una Democratización del Conocimiento</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/03_Cap03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Automatización y Minería de Textos: Herramientas para el Acceso al Conocimiento</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/04_Cap04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aplicaciones Prácticas de la mineria de textos en la Conservación de la Biodiversidad en Ecuador</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/05_Cap05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">El Futuro de la Ciencia Abierta y la Automatización en la Conservación de la Biodiversidad en Ecuador</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/06_Practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Glosario</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introducción-a-la-minería-de-textos-y-automatización" id="toc-introducción-a-la-minería-de-textos-y-automatización" class="nav-link active" data-scroll-target="#introducción-a-la-minería-de-textos-y-automatización"><span class="header-section-number">3.1</span> Introducción a la Minería de Textos y Automatización:</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-la-minería-de-textos" id="toc-qué-es-la-minería-de-textos" class="nav-link" data-scroll-target="#qué-es-la-minería-de-textos"><span class="header-section-number">3.1.1</span> ¿Qué es la minería de textos?</a></li>
+  <li><a href="#qué-es-la-automatización" id="toc-qué-es-la-automatización" class="nav-link" data-scroll-target="#qué-es-la-automatización"><span class="header-section-number">3.1.2</span> ¿Qué es la automatización?</a></li>
+  <li><a href="#aplicación-de-la-minería-de-textos-y-automatización-en-la-conservación" id="toc-aplicación-de-la-minería-de-textos-y-automatización-en-la-conservación" class="nav-link" data-scroll-target="#aplicación-de-la-minería-de-textos-y-automatización-en-la-conservación"><span class="header-section-number">3.1.3</span> Aplicación de la minería de textos y automatización en la conservación</a></li>
+  </ul></li>
+  <li><a href="#extracción-automática-de-información-científica" id="toc-extracción-automática-de-información-científica" class="nav-link" data-scroll-target="#extracción-automática-de-información-científica"><span class="header-section-number">3.2</span> Extracción Automática de Información Científica:</a>
+  <ul class="collapse">
+  <li><a href="#cómo-funciona-la-minería-de-textos-para-extraer-información-científica" id="toc-cómo-funciona-la-minería-de-textos-para-extraer-información-científica" class="nav-link" data-scroll-target="#cómo-funciona-la-minería-de-textos-para-extraer-información-científica"><span class="header-section-number">3.2.1</span> ¿Cómo funciona la minería de textos para extraer información científica?</a></li>
+  <li><a href="#aplicación-en-la-conservación-biológica" id="toc-aplicación-en-la-conservación-biológica" class="nav-link" data-scroll-target="#aplicación-en-la-conservación-biológica"><span class="header-section-number">3.2.2</span> Aplicación en la conservación biológica</a></li>
+  <li><a href="#beneficios-para-estudiantes-y-profesionales-de-la-conservación" id="toc-beneficios-para-estudiantes-y-profesionales-de-la-conservación" class="nav-link" data-scroll-target="#beneficios-para-estudiantes-y-profesionales-de-la-conservación"><span class="header-section-number">3.2.3</span> Beneficios para estudiantes y profesionales de la conservación</a></li>
+  </ul></li>
+  <li><a href="#herramientas-prácticas" id="toc-herramientas-prácticas" class="nav-link" data-scroll-target="#herramientas-prácticas"><span class="header-section-number">3.3</span> Herramientas Prácticas</a>
+  <ul class="collapse">
+  <li><a href="#voyant-tools" id="toc-voyant-tools" class="nav-link" data-scroll-target="#voyant-tools"><span class="header-section-number">3.3.1</span> <strong>Voyant Tools</strong></a></li>
+  <li><a href="#natural-language-toolkit-nltk" id="toc-natural-language-toolkit-nltk" class="nav-link" data-scroll-target="#natural-language-toolkit-nltk"><span class="header-section-number">3.3.2</span> <strong>Natural Language Toolkit (NLTK)</strong></a></li>
+  <li><a href="#google-cloud-natural-language" id="toc-google-cloud-natural-language" class="nav-link" data-scroll-target="#google-cloud-natural-language"><span class="header-section-number">3.3.3</span> <strong>Google Cloud Natural Language</strong></a></li>
+  <li><a href="#rstudio-con-paquetes-text-mining" id="toc-rstudio-con-paquetes-text-mining" class="nav-link" data-scroll-target="#rstudio-con-paquetes-text-mining"><span class="header-section-number">3.3.4</span> <strong>RStudio con paquetes text mining</strong></a></li>
+  <li><a href="#zotero-con-plugins-de-minería-de-textos" id="toc-zotero-con-plugins-de-minería-de-textos" class="nav-link" data-scroll-target="#zotero-con-plugins-de-minería-de-textos"><span class="header-section-number">3.3.5</span> <strong>Zotero con plugins de minería de textos</strong></a></li>
+  </ul></li>
+  <li><a href="#mineria-de-textos-con-r" id="toc-mineria-de-textos-con-r" class="nav-link" data-scroll-target="#mineria-de-textos-con-r"><span class="header-section-number">3.4</span> Mineria de textos con R</a>
+  <ul class="collapse">
+  <li><a href="#herramientas-y-paquetes-clave-de-r-para-la-minería-de-textos" id="toc-herramientas-y-paquetes-clave-de-r-para-la-minería-de-textos" class="nav-link" data-scroll-target="#herramientas-y-paquetes-clave-de-r-para-la-minería-de-textos"><span class="header-section-number">3.4.1</span> Herramientas y paquetes clave de R para la minería de textos</a></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">3.4.2</span> Recursos adicionales</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Automatización y Minería de Textos: Herramientas para el Acceso al Conocimiento</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La automatización y la minería de textos son herramientas clave para facilitar el acceso al conocimiento científico, especialmente en campos como la conservación biológica. Estas técnicas permiten procesar grandes volúmenes de literatura científica de forma eficiente, extrayendo información relevante y patrones clave. En el contexto de la ciencia abierta, la automatización acelera el análisis de datos y simplifica la identificación de estudios, metodologías o resultados útiles para la investigación local. La minería de textos, por su parte, ayuda a descubrir tendencias en publicaciones científicas, facilitando la toma de decisiones basadas en evidencia y mejorando la gestión de la biodiversidad en Ecuador y otros países.</p>
+<p>La <strong>minería de textos</strong> y la <strong>automatización</strong> son tecnologías emergentes que están revolucionando el acceso y uso del conocimiento científico, particularmente en áreas como la conservación biológica. Ambos conceptos están estrechamente relacionados con la ciencia abierta, que busca hacer más accesibles los datos y las investigaciones, permitiendo una mayor participación y colaboración entre científicos, profesionales y comunidades locales.</p>
+<section id="introducción-a-la-minería-de-textos-y-automatización" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introducción-a-la-minería-de-textos-y-automatización"><span class="header-section-number">3.1</span> Introducción a la Minería de Textos y Automatización:</h2>
+<p>La minería de textos y la automatización son herramientas poderosas que están democratizando el acceso al conocimiento científico en el campo de la conservación. Permiten que estudiantes y profesionales en países como Ecuador, donde el acceso a la información científica puede estar limitado, puedan beneficiarse de los avances globales en investigación. Al automatizar el proceso de extracción y análisis de datos, estas tecnologías aceleran la investigación, mejoran la eficiencia en la toma de decisiones y, en última instancia, fortalecen los esfuerzos de conservación de la biodiversidad a nivel local y global.</p>
+<section id="qué-es-la-minería-de-textos" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="qué-es-la-minería-de-textos"><span class="header-section-number">3.1.1</span> ¿Qué es la minería de textos?</h3>
+<p>La minería de textos es una técnica que permite extraer información relevante de grandes cantidades de texto, como artículos científicos, informes técnicos o bases de datos. Utilizando algoritmos de procesamiento del lenguaje natural (NLP, por sus siglas en inglés), la minería de textos analiza el contenido escrito, identifica patrones y relaciones entre palabras y conceptos, y organiza esta información de manera útil. En lugar de que un investigador deba leer cientos o miles de artículos para encontrar datos específicos, los algoritmos pueden automatizar este proceso, extrayendo información relevante en minutos.</p>
+<p>En el campo de la conservación, esto tiene aplicaciones importantes. Por ejemplo, un conservacionista interesado en estudiar el impacto del cambio climático en especies de Ecuador podría usar la minería de textos para revisar la literatura global sobre especies amenazadas en regiones similares. De este modo, puede obtener rápidamente un panorama completo de cómo factores climáticos específicos han afectado a otras especies, identificar metodologías útiles y aplicar este conocimiento en su propio trabajo de campo.</p>
+</section>
+<section id="qué-es-la-automatización" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="qué-es-la-automatización"><span class="header-section-number">3.1.2</span> ¿Qué es la automatización?</h3>
+<p>La automatización es el uso de tecnología para realizar tareas que normalmente requieren intervención humana, pero de manera más rápida y eficiente. En la ciencia, esto puede incluir desde la recolección de datos en sensores ambientales hasta el análisis de grandes conjuntos de datos mediante algoritmos de aprendizaje automático. La automatización es crucial en la conservación, donde el monitoreo continuo y el análisis de datos a gran escala son esenciales para la toma de decisiones informadas.</p>
+<p>Por ejemplo, en la gestión de la biodiversidad, se pueden automatizar procesos como la identificación de especies a partir de imágenes capturadas por cámaras trampa o drones. Los algoritmos de reconocimiento de imágenes pueden clasificar automáticamente las especies, ahorrando tiempo a los investigadores y permitiendo un monitoreo más eficiente de la fauna local.</p>
+</section>
+<section id="aplicación-de-la-minería-de-textos-y-automatización-en-la-conservación" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="aplicación-de-la-minería-de-textos-y-automatización-en-la-conservación"><span class="header-section-number">3.1.3</span> Aplicación de la minería de textos y automatización en la conservación</h3>
+<p>La combinación de la minería de textos y la automatización está transformando la manera en que los científicos acceden y utilizan la información. En el ámbito de la conservación, estas herramientas permiten mejorar la gestión de ecosistemas y la toma de decisiones. Algunas aplicaciones clave incluyen:</p>
+<ol type="1">
+<li><p><strong>Acceso rápido a datos científicos:</strong> La minería de textos permite a los conservacionistas acceder rápidamente a grandes volúmenes de literatura relevante. Esto es particularmente útil cuando se buscan estudios de caso, metodologías o datos específicos para diseñar proyectos de conservación local. La automatización facilita la búsqueda, clasificación y análisis de esta información, agilizando el proceso de investigación.</p></li>
+<li><p><strong>Monitoreo automatizado de la biodiversidad:</strong> Los avances en sensores y cámaras automáticas, combinados con algoritmos de inteligencia artificial, permiten monitorear áreas protegidas de forma continua. La automatización ayuda a detectar cambios en los ecosistemas en tiempo real, como variaciones en la población de una especie o la aparición de amenazas, como especies invasoras o cazadores furtivos.</p></li>
+<li><p><strong>Análisis predictivo:</strong> Gracias a la minería de textos, los conservacionistas pueden identificar tendencias en estudios previos, lo que les permite realizar análisis predictivos. Por ejemplo, al extraer información sobre cómo ciertas especies han respondido a cambios climáticos en el pasado, se pueden predecir los posibles impactos futuros del cambio climático en otras especies.</p></li>
+<li><p><strong>Facilitación de la toma de decisiones basadas en evidencia:</strong> En lugar de depender únicamente de su experiencia, los conservacionistas pueden utilizar datos minados y procesados automáticamente para tomar decisiones más informadas y respaldadas por evidencia científica sólida. Esto es crucial en la planificación de estrategias de conservación a largo plazo, como la creación de áreas protegidas o la restauración de hábitats.</p></li>
+</ol>
+</section>
+</section>
+<section id="extracción-automática-de-información-científica" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="extracción-automática-de-información-científica"><span class="header-section-number">3.2</span> Extracción Automática de Información Científica:</h2>
+<p>La <strong>extracción automática de información científica</strong> es una técnica poderosa que, mediante la <strong>minería de textos</strong>, permite identificar y extraer datos clave de grandes volúmenes de publicaciones académicas. Este proceso se basa en el uso de algoritmos de <strong>procesamiento del lenguaje natural (NLP, por sus siglas en inglés)</strong>, que analizan el contenido textual, identifican patrones y relaciones, y transforman información compleja en datos comprensibles y útiles. En el campo de la conservación biológica, la minería de textos puede ayudar a estudiantes y profesionales a acceder a conocimientos científicos internacionales, a menudo publicados en inglés y en revistas de difícil acceso.</p>
+<section id="cómo-funciona-la-minería-de-textos-para-extraer-información-científica" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="cómo-funciona-la-minería-de-textos-para-extraer-información-científica"><span class="header-section-number">3.2.1</span> ¿Cómo funciona la minería de textos para extraer información científica?</h3>
+<p>El proceso de minería de textos comienza con la recolección de grandes cantidades de documentos, que pueden incluir artículos científicos, informes técnicos y bases de datos. Luego, los algoritmos de NLP analizan estos textos, identificando palabras clave, entidades nombradas (como especies, ecosistemas o amenazas), relaciones entre conceptos, y datos cuantitativos como estadísticas o resultados experimentales.</p>
+<p>A través de técnicas de <strong>tokenización</strong> (dividir el texto en unidades más pequeñas, como palabras o frases) y <strong>etiquetado semántico</strong> (asignar categorías a las palabras según su función y significado), el algoritmo puede extraer información estructurada de un texto no estructurado. Esto significa que datos ocultos dentro de largas publicaciones científicas, como cifras de población de una especie o los efectos del cambio climático en un ecosistema, se vuelven accesibles para análisis más profundos y específicos.</p>
+</section>
+<section id="aplicación-en-la-conservación-biológica" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="aplicación-en-la-conservación-biológica"><span class="header-section-number">3.2.2</span> Aplicación en la conservación biológica</h3>
+<p>La minería de textos tiene aplicaciones particularmente valiosas en la conservación biológica, donde los investigadores y conservacionistas a menudo necesitan sintetizar grandes cantidades de información científica para tomar decisiones informadas. Dado que muchas de estas publicaciones están en inglés y disponibles solo a través de revistas internacionales de acceso restringido, las herramientas de extracción automática permiten democratizar el acceso a estos conocimientos. A continuación, se destacan algunas aplicaciones clave:</p>
+<ol type="1">
+<li><p><strong>Identificación de metodologías aplicables a contextos locales</strong>: En muchos casos, los estudios publicados en revistas internacionales describen metodologías de investigación o conservación que han sido aplicadas en otros países o ecosistemas. La minería de textos puede ayudar a los estudiantes y profesionales a identificar rápidamente estas metodologías, permitiendo su adaptación a contextos locales en Ecuador. Por ejemplo, un conservacionista que estudia los patrones de migración de aves en los Andes puede extraer información de estudios realizados en otros cordones montañosos y adaptar las técnicas de monitoreo para su región.</p></li>
+<li><p><strong>Acceso a datos sobre especies amenazadas</strong>: En la conservación de la biodiversidad, el acceso a datos sobre el estado de conservación de las especies es crucial. A menudo, esta información está dispersa en múltiples publicaciones. La minería de textos puede recopilar automáticamente datos sobre especies amenazadas, como su distribución geográfica, las amenazas que enfrentan o las estrategias de conservación recomendadas. Esto permite a los profesionales locales tomar decisiones informadas sobre cómo priorizar esfuerzos de conservación.</p></li>
+<li><p><strong>Traducción del conocimiento científico internacional</strong>: La barrera del idioma es uno de los obstáculos más grandes para los estudiantes y profesionales de conservación en países donde el inglés no es el idioma dominante. La minería de textos, combinada con herramientas de traducción automática, puede extraer información valiosa de publicaciones en inglés y presentarla de manera comprensible en español. Aunque las traducciones automáticas no siempre son perfectas, son un primer paso para hacer que los datos científicos sean accesibles a un público más amplio.</p></li>
+<li><p><strong>Monitoreo de tendencias globales</strong>: A medida que se publican miles de artículos científicos cada año, es difícil para los conservacionistas locales estar al día con todas las novedades. La minería de textos permite extraer información relevante sobre las últimas tendencias en conservación, como los efectos del cambio climático o nuevas amenazas emergentes para la biodiversidad. Esto ayuda a los profesionales a integrar las últimas investigaciones globales en su trabajo local, sin necesidad de revisar manualmente grandes cantidades de literatura.</p></li>
+</ol>
+</section>
+<section id="beneficios-para-estudiantes-y-profesionales-de-la-conservación" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="beneficios-para-estudiantes-y-profesionales-de-la-conservación"><span class="header-section-number">3.2.3</span> Beneficios para estudiantes y profesionales de la conservación</h3>
+<p>La extracción automática de información a través de la minería de textos tiene varios beneficios clave para estudiantes y profesionales de la conservación:</p>
+<ul>
+<li><p><strong>Ahorro de tiempo</strong>: El proceso de búsqueda y análisis manual de información en la literatura científica puede ser muy lento. La minería de textos automatiza gran parte de este trabajo, permitiendo que los conservacionistas se concentren en la aplicación de los datos.</p></li>
+<li><p><strong>Acceso equitativo al conocimiento</strong>: Las herramientas de minería de textos ayudan a superar las barreras del idioma y del acceso a revistas científicas pagadas, democratizando la información científica y haciéndola más accesible a un público más amplio.</p></li>
+<li><p><strong>Mejora de la toma de decisiones</strong>: Al proporcionar acceso rápido y preciso a datos clave, estas técnicas facilitan decisiones basadas en evidencia, cruciales para la gestión efectiva de la biodiversidad.</p></li>
+</ul>
+</section>
+</section>
+<section id="herramientas-prácticas" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="herramientas-prácticas"><span class="header-section-number">3.3</span> Herramientas Prácticas</h2>
+<p>Existen diversas plataformas y software accesibles que permiten a estudiantes y profesionales de la conservación aplicar técnicas de <strong>minería de textos</strong> y <strong>automatización</strong> en sus propios proyectos. A continuación, se detallan algunas de las herramientas más útiles y ampliamente disponibles:</p>
+<section id="voyant-tools" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="voyant-tools"><span class="header-section-number">3.3.1</span> <strong>Voyant Tools</strong></h3>
+<p>Voyant es una herramienta gratuita y de código abierto diseñada para el análisis de textos. Ofrece visualizaciones interactivas y análisis estadísticos de grandes conjuntos de datos textuales, permitiendo a los usuarios explorar temas, palabras clave y patrones. Es ideal para estudiantes y profesionales que buscan una plataforma sencilla para comenzar a aplicar minería de textos sin conocimientos avanzados de programación. Al ser basada en web, no requiere instalación.</p>
+</section>
+<section id="natural-language-toolkit-nltk" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="natural-language-toolkit-nltk"><span class="header-section-number">3.3.2</span> <strong>Natural Language Toolkit (NLTK)</strong></h3>
+<p>NLTK es una biblioteca de Python ampliamente utilizada en el procesamiento de lenguaje natural. Es una herramienta poderosa para quienes están dispuestos a aprender los fundamentos de programación. Con NLTK, los usuarios pueden realizar una amplia gama de tareas, como el análisis de sentimiento, la extracción de entidades nombradas y la clasificación de textos. Es especialmente útil para proyectos de investigación más complejos o con grandes volúmenes de datos.</p>
+</section>
+<section id="google-cloud-natural-language" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="google-cloud-natural-language"><span class="header-section-number">3.3.3</span> <strong>Google Cloud Natural Language</strong></h3>
+<p>Esta plataforma en la nube de Google proporciona APIs que permiten analizar textos de manera automatizada. Ofrece funcionalidades como la extracción de entidades, análisis de sentimiento y clasificación de contenido. Es ideal para quienes buscan una solución escalable y automatizada sin necesidad de conocimientos avanzados en procesamiento de lenguaje natural.</p>
+</section>
+<section id="rstudio-con-paquetes-text-mining" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="rstudio-con-paquetes-text-mining"><span class="header-section-number">3.3.4</span> <strong>RStudio con paquetes text mining</strong></h3>
+<p>Para aquellos familiarizados con R, el paquete <strong>tm</strong> (Text Mining) y otros relacionados, como <strong>quanteda</strong>, proporcionan herramientas para procesar y analizar textos. Estas bibliotecas permiten la minería de textos en español, facilitando a los conservacionistas el análisis de publicaciones en su idioma.</p>
+</section>
+<section id="zotero-con-plugins-de-minería-de-textos" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="zotero-con-plugins-de-minería-de-textos"><span class="header-section-number">3.3.5</span> <strong>Zotero con plugins de minería de textos</strong></h3>
+<p>Zotero es un gestor de referencias bibliográficas que puede integrarse con plugins para la minería de textos, permitiendo extraer información directamente de bibliotecas académicas y bases de datos.</p>
+<p>Estas herramientas permiten a los estudiantes y profesionales de la conservación aplicar minería de textos y automatización en sus proyectos, facilitando la investigación y el acceso a datos clave.</p>
+</section>
+</section>
+<section id="mineria-de-textos-con-r" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="mineria-de-textos-con-r"><span class="header-section-number">3.4</span> Mineria de textos con R</h2>
+<p><strong>RStudio</strong> y el ecosistema de R ofrecen un conjunto poderoso de herramientas y bibliotecas que permiten a estudiantes y profesionales de la conservación aplicar técnicas de <strong>minería de textos</strong> y <strong>automatización</strong> de manera eficiente. R es un lenguaje de programación muy popular en análisis de datos, y su integración con RStudio, un entorno de desarrollo interactivo (IDE), facilita su uso para quienes desean profundizar en el análisis de grandes volúmenes de textos científicos y otros tipos de datos.</p>
+<section id="herramientas-y-paquetes-clave-de-r-para-la-minería-de-textos" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="herramientas-y-paquetes-clave-de-r-para-la-minería-de-textos"><span class="header-section-number">3.4.1</span> Herramientas y paquetes clave de R para la minería de textos</h3>
+<ol type="1">
+<li><p><strong>Paquete <code>tm</code> (Text Mining)</strong><br>
+El paquete <code>tm</code> es uno de los más conocidos para la <strong>minería de textos</strong> en R. Proporciona una gama de funciones que permiten la <strong>preparación de textos</strong>, su <strong>procesamiento</strong> y <strong>análisis</strong>. Con <code>tm</code>, es posible:</p>
+<ul>
+<li>Convertir un conjunto de documentos en un <strong>Corpus</strong>, que es una colección estructurada de textos.</li>
+<li>Limpiar y normalizar los textos eliminando puntuación, números y palabras comunes que no aportan significado (como artículos o preposiciones).</li>
+<li>Crear matrices de términos (document-term matrices) para análisis estadístico, lo que permite observar la frecuencia de palabras y patrones en el conjunto de textos.</li>
+</ul></li>
+<li><p><strong>Paquete <code>quanteda</code></strong><br>
+<code>quanteda</code> es otra opción avanzada y más moderna para el procesamiento y análisis de textos. A diferencia de <code>tm</code>, <code>quanteda</code> es más eficiente en el manejo de grandes cantidades de texto y permite un análisis rápido de corpus de tamaño considerable. Además, ofrece funciones más complejas como la <strong>análisis de sentimientos</strong> y <strong>modelos temáticos</strong>.</p>
+<p>Algunas de sus capacidades incluyen:</p>
+<ul>
+<li>Análisis de <strong>frecuencia de palabras</strong>.</li>
+<li>Identificación de <strong>n-gramas</strong> (combinaciones de palabras consecutivas).</li>
+<li><strong>Detección de temas</strong> y clasificación de textos.</li>
+</ul></li>
+<li><p><strong>Paquete <code>textmineR</code></strong><br>
+<code>textmineR</code> es ideal para estudiantes y profesionales que desean realizar análisis temáticos avanzados. Este paquete facilita la creación de <strong>modelos de tópicos</strong> mediante <strong>Latent Dirichlet Allocation (LDA)</strong>, que permite identificar temas subyacentes en un corpus de textos.</p></li>
+<li><p><strong>Paquete <code>tidytext</code></strong><br>
+<code>tidytext</code> facilita la <strong>minería de textos</strong> al combinar los principios de la manipulación de datos en R con la estructura de texto. Utiliza el enfoque “tidy” para transformar y analizar textos, haciendo más sencillo su manejo para aquellos que ya están familiarizados con el ecosistema <code>tidyverse</code> (paquetes como <code>dplyr</code> o <code>ggplot2</code>). Es excelente para visualizar patrones y palabras clave en textos.</p></li>
+</ol>
+</section>
+<section id="recursos-adicionales" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">3.4.2</span> Recursos adicionales</h3>
+<ul>
+<li><strong>Libros y tutoriales</strong>: El libro <em>Text Mining with R</em> de Julia Silge y David Robinson es una excelente introducción práctica al uso de <code>tidytext</code> y minería de textos en R. Está disponible gratuitamente en línea y proporciona ejemplos detallados.</li>
+<li><strong>Cursos y tutoriales en línea</strong>: Plataformas como Coursera o DataCamp ofrecen cursos interactivos sobre análisis de textos en R, lo que puede ser útil para quienes están comenzando.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/02_Cap02.html" class="pagination-link  aria-label=" &lt;span="" abierta:="" hacia="" una="" democratización="" del="" conocimiento&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Ciencia Abierta: Hacia una Democratización del Conocimiento</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/04_Cap04.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Aplicaciones Prácticas de la mineria de textos en la Conservación de la Biodiversidad en Ecuador</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aplicaciones Prácticas de la mineria de textos en la Conservación de la Biodiversidad en Ecuador</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC-1.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
