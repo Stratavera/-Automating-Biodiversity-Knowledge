@@ -4,9 +4,39 @@
     "href": "index.html",
     "title": "Biodiversidad en Ecuador: Información a Través de Ciencia Abierta y Mineria de Textos",
     "section": "",
-    "text": "Bienvenido\nEste libro se enfoca en la democratización del conocimiento sobre biodiversidad en Ecuador a través de la ciencia abierta y la automatización, con un enfoque práctico dirigido a estudiantes de conservación biológica y profesionales en la gestión de la biodiversidad.\nEstá diseñado para empoderar a estudiantes y profesionales de la conservación con habilidades prácticas y herramientas de acceso libre, que tradicionalmente se detallan en instrucciones técnicas en inglés. Con ejemplos y estudios de caso relevantes, el libro detalla cómo aplicar estos métodos para mejorar la toma de decisiones, la gestión de ecosistemas y la conservación de la biodiversidad, democratizando el acceso a conocimientos científicos.\n\n\nResumen\n\nEcuador, uno de los países más biodiversos del mundo, enfrenta el desafío de que gran parte del conocimiento científico generado está encerrado en publicaciones internacionales, a menudo en inglés y con metodologías difíciles de aplicar localmente.\n\n\nEl libro presenta cómo la ciencia abierta, que promueve la libre circulación de datos y resultados científicos, puede ayudar a cerrar esta brecha, permitiendo que el conocimiento generado por la investigación sea más accesible y útil para las comunidades locales, los conservacionistas y los formuladores de políticas en Ecuador.\nEl libro propone herramientas y técnicas accesibles para superar estas barreras, ofreciendo una guía clara sobre cómo utilizar la ciencia abierta para compartir datos y resultados científicos de manera más efectiva. Al combinar esto con la automatización a través de la minería de textos y el procesamiento de lenguaje natural, se pretende facilitar la extracción de información clave de la literatura científica, y hacerla comprensible y utilizable por conservacionistas locales.",
+    "text": "Acerca de este libro\nEste libro se enfoca en la democratización del conocimiento sobre biodiversidad en Ecuador a través de la ciencia abierta y la automatización, con un enfoque práctico dirigido a estudiantes de conservación biológica y profesionales en la gestión de la biodiversidad.\nEstá diseñado para empoderar a estudiantes y profesionales de la conservación con habilidades prácticas y herramientas de acceso libre, que tradicionalmente se detallan en instrucciones técnicas en inglés. Con ejemplos y estudios de caso relevantes, el libro detalla cómo aplicar estos métodos para mejorar la toma de decisiones, la gestión de ecosistemas y la conservación de la biodiversidad, democratizando el acceso a conocimientos científicos.",
     "crumbs": [
-      "Bienvenido"
+      "Acerca de este libro"
+    ]
+  },
+  {
+    "objectID": "index.html#como-navegar-este-libro",
+    "href": "index.html#como-navegar-este-libro",
+    "title": "Biodiversidad en Ecuador: Información a Través de Ciencia Abierta y Mineria de Textos",
+    "section": "Como navegar este libro",
+    "text": "Como navegar este libro\n\nEl libro está estructurado con una tabla de contenidos y secciones que te permiten navegar fácilmente entre los capítulos.\nUsa la barra lateral para moverte entre capítulos o subcapítulos. Si está oculta, puedes expandirla para acceder rápidamente a las diferentes secciones.\nLas flechas de navegación en la parte superior o inferior de cada página te permitirán ir al siguiente o anterior capítulo.",
+    "crumbs": [
+      "Acerca de este libro"
+    ]
+  },
+  {
+    "objectID": "index.html#licencia",
+    "href": "index.html#licencia",
+    "title": "Biodiversidad en Ecuador: Información a Través de Ciencia Abierta y Mineria de Textos",
+    "section": "Licencia",
+    "text": "Licencia\n\nEste libro está distribuido bajo una licencia CC-BY, lo que significa que puede ser copiado, distribuido y adaptado siempre que se reconozca la autoría original.",
+    "crumbs": [
+      "Acerca de este libro"
+    ]
+  },
+  {
+    "objectID": "index.html#como-citar",
+    "href": "index.html#como-citar",
+    "title": "Biodiversidad en Ecuador: Información a Través de Ciencia Abierta y Mineria de Textos",
+    "section": "Como citar",
+    "text": "Como citar\n\nTrustwell, E. & Munoz, G. (2024). Biodiversidad en Ecuador: Información a Través de Ciencia Abierta y Minería de Textos (Vol. 1). Stratavera Publishing. ISBN: 978-9942-48-578-6. https://stratavera.github.io/Automating-Biodiversity-Knowledge/ https://doi.org/10.23915/reprodocs.00010",
+    "crumbs": [
+      "Acerca de este libro"
     ]
   },
   {
